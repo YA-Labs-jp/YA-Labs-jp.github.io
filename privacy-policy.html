@@ -37,14 +37,15 @@ footer{margin-top:48px;text-align:center;color:#666;font-size:.9em}
   <li>その他、利用者が本サービス上で入力または送信する情報</li>
 </ul>
 <h3>2. Google認証に関する情報</h3>
-<p>Googleアカウントによるログインを利用する場合、運営者は認証のためにGoogle認証情報を利用します。</p>
-<p>なお、運営者は以下の情報を保存しません。</p>
+<p>本サービスでは、Googleアカウントによるログインを必須としています。</p>
+<p>Googleアカウントによるログインを利用する場合、認証およびアカウント管理のため、Firebase Authenticationにおいて以下の情報が保持されます。</p>
 <ul>
   <li>Googleアカウントのメールアドレス</li>
   <li>Googleアカウントの表示名</li>
   <li>Googleアカウントのプロフィール画像</li>
+  <li>Firebase Authenticationが発行する利用者固有の識別子（UID）</li>
 </ul>
-  <p>また、運営者は認証およびアカウント管理のため、Firebase Authenticationが発行する利用者固有の識別子（UID）を保存します。</p>
+<p>なお、運営者は、認証に必要な利用者固有の識別子（UID）を除き、上記の情報を運営者が管理するCloud Firestoreその他のデータベースには保存しません。</p>
 <h3>3. 自動的に取得する情報</h3>
   <p>本サービスでは、サービス提供および品質向上のため、以下の情報を自動的に取得する場合があります。</p>
   <p>（1）Firebase Analytics</p>
