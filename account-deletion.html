@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>O-GIRI:RANK アカウント削除について | YA Labs.</title>
+<meta name="description" content="O-GIRI:RANK アカウント削除について">
+<style>
+body{margin:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Yu Gothic',sans-serif;color:#333;line-height:1.8}
+.wrap{max-width:900px;margin:40px auto;background:#fff;padding:40px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+h1{border-bottom:3px solid #d4af37;padding-bottom:12px}
+h2{margin-top:36px;border-left:5px solid #d4af37;padding-left:10px}
+hr{border:none;border-top:1px solid #ddd;margin:32px 0}
+footer{margin-top:48px;text-align:center;color:#666;font-size:.9em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>O-GIRI:RANK<br>アカウント削除について</h1>
+<p>本ページは、Google Play Console の「アカウント削除URL」として公開するものです。O-GIRI:RANK（以下「本サービス」）におけるアカウント削除の方法と、削除時のデータの取り扱いについて説明します。</p>
+<p>本ページからアカウントを削除することはできません。アカウントの削除は、本サービスのモバイルアプリ内からのみ行えます。</p>
+<hr>
+<h2>アカウント削除方法</h2>
+<p>本サービスでは、Googleアカウントでログインした利用者が、アプリ内からいつでもアカウントを削除できます。</p>
+<p>ゲスト利用（未登録）の場合は、設定画面にアカウント削除の項目は表示されません。</p>
+<h3>操作手順</h3>
+<ol>
+<li>本サービスのアプリを起動し、Googleアカウントでログインします。</li>
+<li>プロフィール画面右上の設定アイコンをタップし、「設定」画面を開きます。</li>
+<li>設定画面の下部にある「アカウントを削除」をタップします。</li>
+<li>確認ダイアログの内容を確認し、「削除する」をタップします。</li>
+<li>Googleアカウントでの再認証を行います。</li>
+<li>「アカウントを削除しています...」の表示後、削除が完了するとログイン画面へ戻ります。</li>
+</ol>
+<p>確認ダイアログでは、次の内容が表示されます。</p>
+<ul>
+<li>アカウント情報は削除されます。</li>
+<li>投稿した回答は「削除済み」となり、内容は閲覧できなくなります。</li>
+<li>ランキングや成績は、サービスの整合性維持のため匿名化して保持される場合があります。</li>
+<li>この操作は取り消せません。</li>
+</ul>
+<p>再認証に失敗した場合は削除処理は実行されません。削除処理中にエラーが発生した場合は、時間をおいて再度お試しください。</p>
+<hr>
+<h2>削除される情報</h2>
+<p>アカウント削除時、運営者は次の情報を削除または無効化します。</p>
+<h3>1. 認証情報</h3>
+<ul>
+<li>Firebase Authentication 上のアカウント（削除）</li>
+</ul>
+<h3>2. プロフィール情報（匿名化・削除）</h3>
+<ul>
+<li>プレイヤー名（「退会済みプレイヤー」に置き換え）</li>
+<li>プッシュ通知配信用の FCM トークン（削除）</li>
+<li>通知判定用の内部状態（notificationState）（削除）</li>
+</ul>
+<h3>3. 回答情報（匿名化）</h3>
+<ul>
+<li>投稿した回答の本文（「この回答は削除されました」に置き換え）</li>
+<li>回答に紐づくプレイヤー名（「退会済みプレイヤー」に置き換え）</li>
+<li>回答の削除済みフラグ（deleted）の付与</li>
+</ul>
+<h3>4. 評価キュー</h3>
+<ul>
+<li>ユーザーに紐づく evalQueue データ（削除）</li>
+</ul>
+<h3>5. アプリ内の端末ローカルデータ</h3>
+<ul>
+<li>通知履歴</li>
+<li>お知らせの既読状態</li>
+</ul>
+<hr>
+<h2>削除後も保持される情報</h2>
+<p>サービスの整合性維持および運営上の必要性に基づき、次の情報は匿名化したうえで保持される場合があります。</p>
+<h3>1. ユーザーデータ（Firestore）</h3>
+<p>users コレクションのドキュメントは削除されず、退会済みフラグ（deleted）および退会日時（deletedAt）が付与された状態で保持されます。プレイヤー名は「退会済みプレイヤー」に置き換えられます。</p>
+<p>なお、レーティング・ランク・プレミアム会員フラグ（isPremium）・通算戦績（lifetimeStats）・通知設定（notificationSettings）など、上記の匿名化・削除処理の対象外のフィールドは、そのまま保持されます。確定ランキング（finalTop10）およびシーズン成績（seasonResults）に表示されていたプレミアム表示のみ、false に更新されます。</p>
+<h3>2. 回答データおよび集計情報</h3>
+<p>回答ドキュメント自体は削除されません。回答本文およびプレイヤー名は匿名化されますが、評価数・閲覧数・スコア・順位などの集計データ（answerStats を含む）は保持されます。</p>
+<h3>3. ランキング情報（finalTop10）</h3>
+<p>お題の確定ランキング（finalTop10）に掲載されている該当回答について、著者名および回答本文は匿名化されます。プレミアム表示（isPremium）は false に更新されます。順位その他の成績情報は保持されます。</p>
+<h3>4. シーズン成績（seasonResults）</h3>
+<p>シーズン終了時の確定成績について、プレイヤー名は「退会済みプレイヤー」に置き換えられ、プレミアム表示（isPremium）は false に更新されます。順位・ポイント・ランクその他の成績情報は保持されます。</p>
+<hr>
+<h2>削除後の注意事項</h2>
+<ul>
+<li>アカウント削除後、削除したデータを復元することはできません。</li>
+<li>アカウント削除は取り消すことができません。</li>
+<li>Firebase Authentication 上のアカウントは削除されるため、同じ Google アカウントで再度本サービスを利用する場合は、新たにアカウント登録が必要です。</li>
+<li>削除処理は Cloud Functions（deleteAccount）によりサーバー側で実行されます。通信環境等により処理に時間がかかる場合や、処理に失敗する場合があります。</li>
+<li>本ページは Web 上の削除申請窓口ではありません。アカウント削除は必ずアプリ内から行ってください。</li>
+</ul>
+<hr>
+<h2>お問い合わせ</h2>
+<p>アカウント削除に関するお問い合わせは、以下の窓口までご連絡ください。</p>
+<p>運営者：YA Labs.</p>
+<p>メールアドレス：<a href="mailto:ogiri.rank@gmail.com">ogiri.rank@gmail.com</a></p>
+<hr>
+<p>制定日：2026年7月21日</p>
+<footer>© YA Labs.</footer>
+</div>
+</body>
+</html>
