@@ -1,51 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <!--
-    quiz-sore-seikai-dev の OAuth ウェブクライアント。
-    O-GIRI:RANK の clientId ではない。prod 公開前に prod 用へ差し替える。
-  -->
-  <meta name="google-signin-client_id" content="535412072722-98is7m4qadb3velbgcetkehlqd3h6sok.apps.googleusercontent.com">
-  <meta name="description" content="クイズそれ正解">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="クイズそれ正解">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>クイズそれ正解</title>
-  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="YA Labs. Official website">
+  <title>YA Labs.</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+                   "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      color: #202124;
+      background: #f7f8fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 20px; line-height: 1.7; }
+    main {
+      max-width: 680px; margin: 0 auto; padding: 32px;
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+    }
+    h1 { margin: 0; font-size: 2rem; letter-spacing: 0.02em; }
+    .subtitle { margin: 4px 0 28px; color: #626b76; }
+    h2 {
+      margin: 28px 0 12px; padding-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb; font-size: 1.15rem;
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li + li { margin-top: 8px; }
+    a { display: inline-block; color: #1558a6; text-decoration: none; padding: 2px 0; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid #1558a6; outline-offset: 3px; border-radius: 3px; }
+    footer { max-width: 680px; margin: 18px auto 0; color: #6b7280; font-size: 0.875rem; text-align: center; }
+    @media (max-width: 480px) {
+      body { padding: 20px 12px; }
+      main { padding: 24px 20px; }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <main>
+    <h1>YA Labs.</h1>
+    <p class="subtitle">Official website</p>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+    <section aria-labelledby="ogiri-heading">
+      <h2 id="ogiri-heading">O-GIRI:RANK</h2>
+      <ul>
+        <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><a href="account-deletion.html">アカウント削除の仕様について</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="its-seikai-heading">
+      <h2 id="its-seikai-heading">IT'S正解</h2>
+      <ul>
+        <li><a href="its-seikai-terms.html">利用規約</a></li>
+        <li><a href="its-seikai-privacy-policy.html">プライバシーポリシー</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer><p>&copy; YA Labs.</p></footer>
 </body>
 </html>
