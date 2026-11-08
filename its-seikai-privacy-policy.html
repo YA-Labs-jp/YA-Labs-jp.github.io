@@ -6,7 +6,7 @@
 <title>IT'S正解 プライバシーポリシー | YA Labs.</title>
 <meta name="description" content="IT'S正解 プライバシーポリシー">
 <style>
-body{margin:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Yu Gothic',sans-serif;color:#333;line-height:1.8}
+body{margin:0;background:#f5f5f5;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:#333;line-height:1.8}
 .wrap{max-width:900px;margin:40px auto;background:#fff;padding:40px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
 h1{border-bottom:3px solid #1a73e8;padding-bottom:12px}
 h2{margin-top:36px;border-left:5px solid #1a73e8;padding-left:10px}
@@ -75,7 +75,19 @@ a{color:#1a73e8}
 <p>（4）Firebase Cloud Messaging</p>
 <p>Webブラウザでは利用しません。それ以外の対応する端末では、プッシュ通知配信のためのFCMトークンを取得します。</p>
 <p>（5）Google Mobile Ads</p>
-<p>Android版では、バナー広告、および回答を編集する前の動画広告をリクエストする場合があります。広告のリクエストに、回答本文その他の投稿内容は含めません。Webブラウザでは広告を表示しません。広告に関するソフトウェアが端末から取得する情報の項目は、アプリのコードからは特定できないため、本ポリシーでは断定しません。広告に関する設定は、Googleアカウントまたは端末の設定から変更できる場合があります。</p>
+<p>Android版では、バナー広告、および回答を編集する前の動画広告をリクエストする場合があります。広告フリーまたはプレミアムが有効であることを確認できたときは、バナー広告をリクエストしません。プレミアムが有効であることを確認できたときは、回答の編集前の動画広告をリクエストしません。広告フリーだけでは、この動画広告のリクエストを省略しません。広告のリクエストに、回答本文その他の投稿内容は含めません。Webブラウザでは広告を表示しません。広告に関するソフトウェアが端末から取得する情報の項目は、アプリのコードからは特定できないため、本ポリシーでは断定しません。広告に関する設定は、Googleアカウントまたは端末の設定から変更できる場合があります。</p>
+<h3>5. 購入に関する情報</h3>
+<p>Android版で広告フリーまたはプレミアムを購入し、または購入を復元するとき、運営者は次の情報を取り扱う場合があります。</p>
+<ul>
+  <li>商品の識別子</li>
+  <li>Google Play が発行する購入トークン</li>
+  <li>購入トークンから計算したハッシュ</li>
+  <li>広告フリーまたはプレミアムが有効か</li>
+  <li>プレミアムの有効期限</li>
+  <li>これらの状態を更新した日時</li>
+</ul>
+<p>アプリは、Google Play Billing から商品の識別子と購入トークンを受け取ります。Cloud Functions は、Google Play Developer API でその購入を確認したうえで、Cloud Firestore に保存します。購入トークンは、プレイヤー名や回答を保存する記録とは別の、利用者ごとの非公開の記録に保存します。ハッシュは、同じ購入を別のアカウントへ紐づけないために保存します。料金の額、クレジットカード番号その他の支払手段の情報は、運営者のデータベースには保存しません。</p>
+<p>購入の確認の記録には、商品の識別子、購読または一回限りの購入の状態、および処理の成否を含めることがあります。この記録には、購入トークンそのものは含めません。プレミアムの状態を定期的に確認する記録には、利用者の識別子を含めることがあります。</p>
 <hr>
 <h2>第3条（情報の利用目的）</h2>
 <p>運営者は、取得した情報を、次の目的のために利用します。</p>
@@ -88,6 +100,7 @@ a{color:#1a73e8}
   <li>利用状況の分析ならびにサービス品質の向上のため</li>
   <li>対応する端末におけるアプリの障害解析およびパフォーマンス改善のため</li>
   <li>Android版における広告の表示のため</li>
+  <li>広告フリーおよびプレミアムの購入確認、権利の付与、復元、有効期限の反映および取り消しのため</li>
   <li>お問い合わせへの対応のため</li>
   <li>法令に基づく対応その他本サービスの適切な運営のため</li>
 </ol>
@@ -97,12 +110,14 @@ a{color:#1a73e8}
 <ol>
   <li>Firebase Authentication（認証。匿名認証およびGoogleログイン）</li>
   <li>Cloud Firestore（データ保存）</li>
-  <li>Cloud Functions（回答の受付、集計、通知、退会その他の処理）</li>
+  <li>Cloud Functions（回答の受付、集計、通知、退会、購入の確認その他の処理）</li>
   <li>Firebase Cloud Messaging（プッシュ通知。Webブラウザでは利用しません）</li>
   <li>Firebase Analytics（利用状況の分析）</li>
   <li>Firebase Crashlytics（障害解析。Webブラウザでは利用しません）</li>
   <li>Firebase Performance Monitoring（パフォーマンス分析。Webブラウザでは利用しません）</li>
   <li>Google Mobile Ads（広告配信。Android版）</li>
+  <li>Google Play Billing（Android版の購入および購入の復元）</li>
+  <li>Google Play Developer API（購入の確認、プレミアムの状態の定期的な確認、広告フリーの取り消しの確認）</li>
 </ol>
 <p>各外部サービスにおける情報の取扱いについては、それぞれのサービス提供者が定めるプライバシーポリシー等をご確認ください。</p>
 <p>参考：</p>
@@ -124,6 +139,7 @@ a{color:#1a73e8}
     <li>利用者本人の同意がある場合</li>
     <li>本サービスの提供に必要な範囲で、Firebaseその他の外部サービス提供者へ情報を提供する場合</li>
     <li>Android版のGoogle Mobile Adsによる広告配信に必要な範囲で、広告配信事業者が情報を利用する場合</li>
+    <li>Android版の購入を確認し、その後の有効性を確認するため、商品の識別子および購入トークンを Google Play Developer API で照会する場合</li>
     <li>業務委託先へ必要な範囲で情報を提供する場合</li>
   </ol>
   </li>
@@ -171,7 +187,8 @@ a{color:#1a73e8}
 <hr>
 <h2>附則</h2>
 <p>制定日：2026年10月24日</p>
-<p>本ポリシーは、制定日より施行します。</p>
+<p>改定日：2026年11月2日</p>
+<p>本ポリシーは、制定日より施行します。2026年11月2日の改定は、同日から適用します。</p>
 <footer>© YA Labs.</footer>
 </div>
 </body>
